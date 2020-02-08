@@ -1,13 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 void main() => runApp(MyApp());
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp>{
+  @override
+  void initState(){
+    super.initState();
+    SystemChrome.setEnabledSystemUIOverlays([]);
+  }
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Coofe App',
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -23,6 +34,8 @@ class MyApp extends StatelessWidget {
       home: AuthPage(),
     );
   }
+
+
 }
 
 class AuthPage extends StatelessWidget {
@@ -65,7 +78,9 @@ class PageViewItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: const EdgeInsets.fromLTRB(12,12,12,0),
       decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(16),
         color: Colors.black,
         image: DecorationImage(
           fit: BoxFit.cover,
