@@ -26,10 +26,53 @@ class MyApp extends StatelessWidget {
 }
 
 class AuthPage extends StatelessWidget {
+
+  final image = <String> [
+    'https://www.adamgault.co.uk/wp-content/uploads/2015/11/TradeIndustry038.jpg',
+    'https://img.etimg.com/thumb/msid-66650613,width-643,imgsize-801611,resizemode-4/coffee.jpg',
+    'https://img.etimg.com/thumb/msid-66650613,width-643,imgsize-801611,resizemode-4/coffee.jpg'
+  ];
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      body: SingleChildScrollView(
+        child: Column(
+          children: <Widget>[
+            Container(
+              height: 200.0,
+              width: double.infinity,
+              child: PageView(
+                children: image.map((link){
+                  return PageViewItem(
+                    imageUrl: link,
+                  );
+                }).toList(),
+              ),
+            )
+          ],
+        ),
+      ),
+    );
   }
 }
+
+class PageViewItem extends StatelessWidget {
+  final String imageUrl;
+
+  const PageViewItem({Key key,
+    @required this.imageUrl}) : assert(imageUrl != null),
+        assert(imageUrl != '');
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 200,
+      width: 200,
+      decoration: BoxDecoration(
+        color: Colors.black
+      ),
+    );
+  }
+}
+
 
 
