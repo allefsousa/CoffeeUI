@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
 class AuthPage extends StatelessWidget {
 
   final image = <String> [
-    'https://www.adamgault.co.uk/wp-content/uploads/2015/11/TradeIndustry038.jpg',
+    'https://img.etimg.com/thumb/msid-66650613,width-643,imgsize-801611,resizemode-4/coffee.jpg',
     'https://img.etimg.com/thumb/msid-66650613,width-643,imgsize-801611,resizemode-4/coffee.jpg',
     'https://img.etimg.com/thumb/msid-66650613,width-643,imgsize-801611,resizemode-4/coffee.jpg'
   ];
@@ -39,7 +39,7 @@ class AuthPage extends StatelessWidget {
         child: Column(
           children: <Widget>[
             Container(
-              height: 200.0,
+              height: MediaQuery.of(context).size.height /1.2,
               width: double.infinity,
               child: PageView(
                 children: image.map((link){
@@ -65,10 +65,12 @@ class PageViewItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 200,
-      width: 200,
       decoration: BoxDecoration(
-        color: Colors.black
+        color: Colors.black,
+        image: DecorationImage(
+          fit: BoxFit.cover,
+          image: NetworkImage(imageUrl)
+        )
       ),
     );
   }
